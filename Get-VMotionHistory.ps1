@@ -1,15 +1,15 @@
 <#  
 
 .NOTES
-Dot source the function so it can be used
-period then a space and then the full or relative path to the function
-. ./myscript.ps1
+Dot source the both functions so they can be used
+ie: period then a space and then the full or relative path to the function
+. ./Get-VIEventPlus.ps1
+. ./Get-VMotionHistory
 
 
 .EXAMPLE
 Get-Cluster -Name Cluster1 | Get-MotionHistory -Hours 24 -Recurse:$true
-Get-Cluster -Name Cluster1 | Get-MotionHistory -Hours 24 -Recurse:$true | Export-Csv C:\vSpherePowerCLI\Output\motion-report1.csv -NoTypeINformation -UseCulture
-
+Get-Cluster -Name Cluster1 | Get-MotionHistory -Hours 24 -Recurse:$true | Export-Csv C:\PowerCLI\Output\vmotion-report1.csv -NoTypeINformation -UseCulture
 #>
 
 
@@ -109,7 +109,23 @@ $eventCollector.DestroyCollector()
 $events
 }
 }
-function Get-MotionHistory {
+
+
+<#  
+
+.NOTES
+Dot source the function so it can be used
+period then a space and then the full or relative path to the function
+. ./Get-MotionHistory.ps1
+
+
+.EXAMPLE
+Get-Cluster -Name Cluster1 | Get-MotionHistory -Hours 24 -Recurse:$true
+Get-Cluster -Name Cluster1 | Get-MotionHistory -Hours 24 -Recurse:$true | Export-Csv C:\vSpherePowerCLI\Output\motion-report1.csv -NoTypeINformation -UseCulture
+
+#>
+
+function Get-VMotionHistory {
 <#   
 .SYNOPSIS  Returns the vMotion/svMotion history    
 .DESCRIPTION The function will return information on all
